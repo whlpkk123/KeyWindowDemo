@@ -2,11 +2,12 @@
 //  ViewController.m
 //  UIDemo
 //
-//  Created by bytedance on 2022/7/19.
+//  Created by YZK on 2022/7/19.
 //
 
 #import "ViewController.h"
 #import "YZKWindow.h"
+#import "YZKViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) UIWindow *window2;
@@ -35,6 +36,9 @@
     [button setTitle:@"button" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [window addSubview:button];
+    
+    // 测试 PresentViewController 打开注释
+//    window.rootViewController = [YZKViewController new];
 }
 
 - (void)btnClick {

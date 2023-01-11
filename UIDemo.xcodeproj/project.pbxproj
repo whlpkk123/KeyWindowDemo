@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B5243EC296E6E59000296D0 /* YZKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5243EB296E6E59000296D0 /* YZKViewController.m */; };
 		2B738941296586A600DD2D1E /* YZKWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B738940296586A600DD2D1E /* YZKWindow.m */; };
 		2BE7BEE72886599B00E99F71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE7BEE62886599B00E99F71 /* AppDelegate.m */; };
 		2BE7BEED2886599B00E99F71 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE7BEEC2886599B00E99F71 /* ViewController.m */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B5243EA296E6E59000296D0 /* YZKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKViewController.h; sourceTree = "<group>"; };
+		2B5243EB296E6E59000296D0 /* YZKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKViewController.m; sourceTree = "<group>"; };
 		2B73893F296586A600DD2D1E /* YZKWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZKWindow.h; sourceTree = "<group>"; };
 		2B738940296586A600DD2D1E /* YZKWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZKWindow.m; sourceTree = "<group>"; };
 		2BE7BEE22886599B00E99F71 /* UIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +70,8 @@
 				2BE7BEEC2886599B00E99F71 /* ViewController.m */,
 				2B73893F296586A600DD2D1E /* YZKWindow.h */,
 				2B738940296586A600DD2D1E /* YZKWindow.m */,
+				2B5243EA296E6E59000296D0 /* YZKViewController.h */,
+				2B5243EB296E6E59000296D0 /* YZKViewController.m */,
 				2BE7BEEE2886599B00E99F71 /* Main.storyboard */,
 				2BE7BEF12886599C00E99F71 /* Assets.xcassets */,
 				2BE7BEF32886599C00E99F71 /* LaunchScreen.storyboard */,
@@ -150,6 +155,7 @@
 				2BE7BEED2886599B00E99F71 /* ViewController.m in Sources */,
 				2BE7BEE72886599B00E99F71 /* AppDelegate.m in Sources */,
 				2BE7BEF82886599C00E99F71 /* main.m in Sources */,
+				2B5243EC296E6E59000296D0 /* YZKViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
