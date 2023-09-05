@@ -20,6 +20,8 @@ iOS 中的 KeyWindow，很多做iOS开发的小伙伴一定都知道这个属性
 
 大多数情况下，应用程序窗口会成为关键窗口。因为iOS使用单独的窗口来显示警报视图和输入附件视图，这些窗口也可以成为关键。例如，当警报或输入附件视图有一个用户目前正在输入的文本字段时，包含输入视图的窗口就是关键。
 
+翻译的很不好，小伙伴领悟大概意思即可。
+
 ### KeyWindow 和 普通Window的区别
 
 普通Window也是可以正常响应触摸事件的，但是不可以响应非触摸事件。这里的非触摸事件，包含：摇晃等运动传感器产生的事件、远程控制（AirPlay投射，耳机线控，车载系统显示）等事件。
@@ -41,7 +43,8 @@ iOS 中的 KeyWindow，很多做iOS开发的小伙伴一定都知道这个属性
 }
 @end
   
-// 另一个controller的一个点击事件
+// 当前展示页面的Controller文件中
+// 我们触发一个点击事件，具体操作如下：
 - (void)btnclick {
     NSLog(@"1 %@", [UIApplication sharedApplication].windows);
     UIWindow *window = [[YZKWindow alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
@@ -60,7 +63,7 @@ iOS 中的 KeyWindow，很多做iOS开发的小伙伴一定都知道这个属性
 }
 ```
 
-如上述代码所示，我们创建了一个YZKWindow的实例，并且没有 `makeKeyAndVisible`。但是我们依然可以在界面上看到我们的Window显示，此时我们摇一摇手机，我们可以看到，并没有打印“摇一摇”的log。
+如上述代码所示，我们创建了一个YZKWindow的实例，并且没有 `makeKeyAndVisible`。通过直接设置 `window.hidden = NO` ，即可在页面上展示Window。此时我们摇一摇手机，我们可以看到，并没有打印“摇一摇”的log。
 
 这是因为此时的KeyWindow是我们应用的主Window，即appdelegate.window（iOS13往后sceneDelegate.window类似）。此时的摇晃事件，会从Application传递给当前的KeyWindow。由于UIWindow也继承自UIResponder，这个事件会根据事件的传递链以及响应链去查找对应的响应者。显然我们的YZKWindow不在链条中，所以不会触发事件。
 
@@ -74,11 +77,13 @@ iOS 中的 KeyWindow，很多做iOS开发的小伙伴一定都知道这个属性
 
 同理，当我们使用UIAlertController（带TextField）或弹出键盘（带AccessoryView）的时候，系统都有可能会切换KeyWindow。
 
+由于切换KeyWindow会影响非触摸事件的响应，当我们在做一些自定义Window展示的时候，推荐重写UIWindow 的 `- (BOOL)canBecomeKeyWindow` 方法，使其不可变为KeyWindow。
+
 ### Normal Window的展示
 
-很多开发的小伙伴，在创建完Window后，会认为只有调用 `makeKeyAndVisible` 才能展示出Window，这其实是错误的。
+很多开发的小伙伴，在创建完Window后，会认为只有调用 `makeKeyAndVisible` 才能展示出Window，这其实是错误的。上文已经演示了，这里我们仅需简单的设置 `window.hidden = NO`，就可以让Window展示。
 
-事实上，当我们创建完成一个Window后，通过 `[UIApplication sharedApplication].windows` 方法，我们可以看到，其实已经添加到我们的Application上了。这里我们仅需简单的设置 `window.hidden = NO`，就可以让Window展示。
+事实上，当我们创建完成一个Window后，通过 `[UIApplication sharedApplication].windows` 方法，我们可以看到，其实已经添加到我们的Application上了。
 
 需要注意， `[UIApplication sharedApplication].windows` 数组并不会强引用Window，如果不将Window的实例强引用保存起来，它会很快释放，导致页面不能展示对应的window实例。
 
