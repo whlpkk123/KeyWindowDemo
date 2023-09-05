@@ -9,6 +9,10 @@
 
 @implementation YZKWindow
 
+//- (BOOL)canBecomeKeyWindow {
+//    return NO;
+//}
+
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(nullable UIEvent *)event {
     if (motion == UIEventSubtypeMotionShake)
     {

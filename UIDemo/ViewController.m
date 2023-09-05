@@ -30,23 +30,8 @@
     window.hidden = NO;
     self.window2 = window;
     NSLog(@"3 %@", [UIApplication sharedApplication].keyWindow);
-
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(0, 0, 100, 30);
-    [button setTitle:@"button" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-    [window addSubview:button];
     
-    // 测试 PresentViewController 打开注释
-//    window.rootViewController = [YZKViewController new];
-}
-
-- (void)btnClick {
-    NSLog(@"4 %@", [UIApplication sharedApplication].keyWindow);
-    NSLog(@"5 %@", [UIApplication sharedApplication].windows);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSLog(@"6 %@", [UIApplication sharedApplication].keyWindow);
-    });
+    window.rootViewController = [YZKViewController new];
 }
 
 @end
